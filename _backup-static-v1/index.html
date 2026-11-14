@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123b4d">
+<meta name="description" content="البوابة المدرسية لروضة الخل وابتدائية الكواكب بالعارضة">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>الكواكب | البوابة المدرسية</title>
+<link rel="icon" href="assets/school-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="portal.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#home">
+      <span class="school-brand-logo"><img src="assets/school-logo.png" alt="شعار المدرسة"></span>
+      <span><strong>الكواكب</strong><small>البوابة المدرسية المتكاملة</small></span>
+    </a>
+    <div class="nav-label">مساحة المدرسة</div>
+    <nav id="mainNav"></nav>
+    <div class="nav-label">الأعمال والإنجازات</div>
+    <nav id="sectionNav"></nav>
+    <div class="sidebar-bottom">
+      <a href="admin.html#settings" data-icon="settings">إعدادات المدرسة</a>
+      <div class="private-note" data-icon-lead="lock">
+        <div><strong>بوابة أعمال المدرسة</strong><small>بيانات مشتركة، وصلاحيات واضحة</small></div>
+      </div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="content-shell">
+    <header class="topbar">
+      <div class="top-title">
+        <img class="top-school-logo" src="assets/school-logo.png" alt="شعار المدرسة">
+        <button class="icon-button mobile-menu" id="menuBtn" type="button" aria-label="فتح القائمة" data-icon="menu"></button>
+        <span>روضة الخل وابتدائية الكواكب <b>بالعارضة</b></span>
+      </div>
+      <div class="top-meta">
+        <a class="header-login" href="admin.html" data-icon="shield"><span>دخول الإدارة</span></a>
+        <span class="year" id="yearLabel" data-icon="calendar"></span>
+        <a class="admin-avatar" href="#team" aria-label="فريق المدرسة" data-icon="users"></a>
+      </div>
+    </header>
+    <div class="identity">
+      <img src="assets/school-identity.jpg" alt="هوية روضة الخل وابتدائية الكواكب بالعارضة — الإدارة العامة للتعليم بمنطقة جازان — وزارة التعليم">
+    </div>
+    <main id="view"></main>
+  </div>
+</div>
+<div class="print-report" id="printReport"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" integrity="sha384-0w2KAL2YHP6wKOkUDzkCDGgVvfmHnj02DHeQ6XcHOgTfFsGyonKOpShMH1x6nk9o" crossorigin="anonymous"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

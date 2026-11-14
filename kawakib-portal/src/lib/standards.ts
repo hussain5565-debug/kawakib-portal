@@ -1,0 +1,12 @@
+import type {Criterion} from './sections';
+import {standardGroups as legacyGroups} from './standards-legacy';
+export {normalizeCode} from './standards-legacy';
+export const REFERENCE_VERSION='general-2026-v2';
+export const standardsSource={title:'وثيقة معايير التقويم والتصنيف والاعتماد المدرسي للتعليم العام — الإصدار الثاني 2026',url:'https://www.scribd.com/document/1012556383'};
+export const rightsSource=standardsSource;
+// Stable identities follow the meaning of a legacy indicator, even when its code changes.
+const identities:Record<string,number[]>={'1-1':[1,2],'1-2':[3,4,6,7,8],'1-3':[9,10,11],'1-4':[12,13,14,15,16,17,18],'1-5':[51,5],'2-1':[19,20,21,22,23,24,25,26,28],'2-2':[29,53,30,31],'3-1':[32,33,34,35,36,37],'3-2':[38,39,40,41,42,43,44],'4-1':[54,45,46,47],'4-2':[48,49,50]};
+const changes:Record<string,string[]>={'1-2':['ترسيخ الانتماء','أخلاقيات المهنة','ضبط المواظبة','تعزيز الإيجابية','رعاية المواهب'],'1-5':['حفظ الحقوق والحماية','الأمان النفسي والاجتماعي'],'2-1':['عدالة الفرص','تفعيل المنهج','تنويع التدريس','توظيف التقنية','التطبيق الحياتي','تأسيس المهارات','التفكير والبحث والابتكار','النضج الوجداني','تحفيز التعلم'],'2-2':['تنوع قياس الأداء','قياس أهداف المنهج','استثمار النتائج','إرشاد المتعلم والأسرة'],'3-2':['الاعتزاز الوطني','تقدير الذات والآخرين','العادات الصحية','الإسهام التطوعي','السلوك المنضبط','الاستقلال بالتعلم','احترام الثقافات'],'4-1':['استيفاء اشتراطات المبنى','ملاءمة المساحات','تجهيز التعلم','إتاحة الخدمات']};
+export const standardGroups=legacyGroups.map(g=>({...g,titles:changes[g.code]||g.titles})).sort((a,b)=>a.code.localeCompare(b.code,'en',{numeric:true}));
+export function standardId(n:number){return'e7ec2023-0000-4000-8000-'+String(n).padStart(12,'0')}
+export function standardCatalog():Criterion[]{return standardGroups.flatMap(g=>g.titles.map((title,i)=>{const privateOnly=g.code==='1-4'&&i<3,science=g.code==='3-1'&&[2,5].includes(i);return{id:standardId(identities[g.code][i]),domain:g.domain,subdomain:g.name,code:g.code+'-1-'+(i+1),title,description:'عنوان تنظيمي مختصر وفق '+standardsSource.title+'. النص والتفاصيل في صفحات 11–14 من نسخة الوثيقة المتاحة للاطلاع.'+(privateOnly?' خاص بالأهلي والعالمي في المرجع؛ خارج احتساب المدرسة الحكومية.':science?' القياس الوطني للعلوم خارج الاحتساب افتراضيًا للصفوف الأولية؛ يراجع انطباقه وفق تقرير المدرسة.':''),expected:g.evidence,responsible:g.role,applicable:privateOnly||science?0:1,referenceVersion:REFERENCE_VERSION,previousCode:'',publicVisible:1,archived:null,createdAt:'2026-11-14T00:00:00.000Z',updatedAt:'2026-11-14T00:00:00.000Z'};}));}
